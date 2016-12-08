@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_624b5a8623c221a32614431e8567e587e8eec0f5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a1ed98e01bd58976d80c062fd0ea2968a1ff68a1">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-9.8.0_35e60b0371e12109039f8dfa347ed77a4936e71d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c2d55c7e021479f858730e9263b0417f4e4b35a4">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c5990216864129ae2431d0857b0c1761c69b33f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ca851be26ff89f5b32cc222cee98139fb3fac830">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-9.8.0_0fec04077618b9c28b0cb907fba5a0b289fe7c31/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-alpha9/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2b64f6a762f61a2379d6a79af03e2ee56eefe0b">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.constraint-constraint-layout-1.0.0-alpha9_814cc35ec34a1d1d0771d431663fe0cae7ed244f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c61641e333fa88da21758bab8cc28ee16604b05f">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-9.8.0_8a5400a37ea6d6591495fbb7c86bafd54c578b73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-9.8.0_e226572054f502707a56d083c17cdf50af18702f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9ff04cc3470178a44512624036751a803418c2ca">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-9.8.0_28dfeeadd57988e7120e2fd8f88ee82d6b5eb283/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="15e59454416c6341bd3ed2533b585cd340682dd1">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-9.8.0_f503692570749ba60ef640412035532460b40b17/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.0_a5740f9e672d8ec1a57ce13624da73e0c5bf5bca/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-9.8.0_80abeaddba938f656c695926175bc2a91908e079/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.0_5fb84dd1eb7c527cd7c693f21cc72a3577aa161d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.0_46de4a42a2f3a115ce41a4c709e4a9c2d35dcd45/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5fe21d076a7f6750131d5d88053fc79491ffaf46">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f8516a9e9062d5fc28df3451f65d7a9c4bf7a944/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-alpha9/constraint-layout-solver-1.0.0-alpha9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a908fd0803cc5f65b007101002aec06dc7544da">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.0-alpha9_e4d8951c8b878448c064a4e4be36f902574e7e42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-common/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4438b1a7848a7c571122ba618aa1304514aabee6">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-common-9.8.0_5cd86d0e1096fd690ef8a0a9ac3c148e11c711d5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_b9ea5a7f298b5fca6a5bdc60a8f7562549d1337b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_5d97ed78399f4b96e055c714b9d7a6cb55c11030/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_fb74b669383504aa4a468a73091c2ee02e80e64b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/transition/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.0.0_073e00a2575caf5bfd3dd18483c7a564d79b76bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.0_9f0c1ca761f3d5379d955523d89699ca3119b7d3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="190a642ba16d1421296a4d794606279b80039c59">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-9.8.0_97ec15df7d13bf4f685ff0f818fc26bb61c209a0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_2ae1cd7a21943555c7a2253bfead2eee65dcec03/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_be20f02a9decd348ff44b21290d2608d11eb7e15/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_007312348c68d76a717b8e539dbbac89a12ad9cd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.0_a1e9a3ff0fc6a00a568f8949c0dd0378ada295bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.8.0_db481ca0ef7240e1b7d0c96a5b5df9ba96ed83a9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_14856e347a20a733c01f854990d9d0f5ee0197f7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/design/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.0.0_801b651c1778f5786532d79576dcbf3abdb337ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-module/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3f8f779a22cbb4c4d0759467a4f1011bb5252970">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-module-9.8.0_5c1a090bf1111a684c7f2793ca4efdefa71af47e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.8.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6b6f292b8b951dcf2ecf2b20853e3eabc7d65c48">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-9.8.0_842dfe600a3acc504887368b266cb2fe94c2724c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_5c80edb994be38b7e04496d65a991ef7d54038d0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_264cd0c8cb19f398929493198e5e5116eb946752/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/beomseok/Desktop/GreekDay/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_7ac2e6986be4d1763eac4359572ed570888e6693/classes.dex" />
+    </item>
+
+</items>

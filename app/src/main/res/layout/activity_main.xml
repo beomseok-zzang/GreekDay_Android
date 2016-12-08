@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context="com.example.beomseok.greekday.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/main_main"
+        android:adjustViewBounds="true" />
+    <TextView
+        android:text="@string/open_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey"
+        android:padding="8dp"
+        android:id="@+id/textView" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="4"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:background="@drawable/main_border"
+        android:layout_height="0dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/main_border_right"
+            android:layout_weight="1"
+            android:id="@+id/layout_card">
+            <ImageView
+                android:id="@+id/img_card"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/credit_card_icon"
+                android:adjustViewBounds="true" />
+            <TextView
+                android:text="0 ￦"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_below="@id/img_card" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/layout_order">
+            <TextView
+                android:text="@string/main_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:background="@drawable/main_border"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/main_border_right"
+            android:layout_weight="1"
+            android:id="@+id/layout_counsel">
+
+            <TextView
+                android:text="@string/main_counsel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/layout_notice">
+
+            <TextView
+                android:text="@string/main_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
