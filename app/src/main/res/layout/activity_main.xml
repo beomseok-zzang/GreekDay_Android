@@ -28,14 +28,14 @@
         android:layout_weight="4"
         android:weightSum="2"
         android:layout_width="match_parent"
-        android:background="@drawable/main_border"
         android:layout_height="0dp">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="@drawable/main_border_right"
+            android:clickable="true"
+            android:background="@drawable/main_ripple"
             android:layout_weight="1"
             android:id="@+id/layout_card">
             <ImageView
@@ -53,6 +53,8 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:clickable="true"
+            android:background="@drawable/main_ripple"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -75,10 +77,11 @@
         android:layout_height="0dp">
 
         <RelativeLayout
+            android:clickable="true"
+            android:background="@drawable/main_ripple"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="@drawable/main_border_right"
             android:layout_weight="1"
             android:id="@+id/layout_counsel">
 
@@ -94,6 +97,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_weight="1"
+            android:clickable="true"
+            android:background="@drawable/main_ripple"
             android:id="@+id/layout_notice">
 
             <TextView

@@ -3,14 +3,20 @@ package com.example.beomseok.greekday.adapter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,17 +35,17 @@ import java.util.Map;
 public class ToppingRecyclerAdapter extends RecyclerView.Adapter<ToppingRecyclerAdapter.ViewHolder> {
     private ArrayList<Topping> toppings;
     private HashMap<String,Topping>  checkedToppings;
-    private TextView parentTV;
+    private ActionBar actionBar;
     private Context context;
     private int dummyImg[] = {R.mipmap.sample_1,R.mipmap.sample_2,R.mipmap.sample_3,R.mipmap.sample_4,R.mipmap.sample_5
             ,R.mipmap.sample_6,R.mipmap.sample_7,R.mipmap.sample_8};
-    public ToppingRecyclerAdapter(ArrayList<Topping> toppings, Context context, HashMap<String,Topping> checkedToppings, TextView parentTV){
+    public ToppingRecyclerAdapter(ArrayList<Topping> toppings, Context context, HashMap<String,Topping> checkedToppings, ActionBar actionBar){
         if (toppings == null) {
             throw new IllegalArgumentException(
                     "modelData must not be null");
         }
         this.checkedToppings = checkedToppings;
-        this.parentTV = parentTV;
+        this.actionBar = actionBar;
         this.context = context;
         this.toppings = toppings;
 
@@ -57,17 +63,16 @@ public class ToppingRecyclerAdapter extends RecyclerView.Adapter<ToppingRecycler
         public final TextView tvToppingPrice;
         public final ImageView ivTopping;
         public final ImageView ivClick;
-        public final FrameLayout frameLayout;
         public final CheckBox checkBox;
+        public final LinearLayout linearLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_order);
             tvToppingName = (TextView) itemView.findViewById(R.id.txt_item_topping_name);
             tvToppingPrice = (TextView) itemView.findViewById(R.id.txt_item_topping_price);
             ivTopping = (ImageView) itemView.findViewById(R.id.img_item_topping);
             ivClick = (ImageView) itemView.findViewById(R.id.iv_order_click);
-            frameLayout = (FrameLayout) itemView.findViewById(R.id.frame_order);
             checkBox = (CheckBox) itemView.findViewById(R.id.order_check_box);
         }
 
@@ -88,30 +93,35 @@ public class ToppingRecyclerAdapter extends RecyclerView.Adapter<ToppingRecycler
         final ViewHolder tpHoder = holder;
         tpHoder.tvToppingName.setText(toppings.get(position).name);
         tpHoder.tvToppingPrice.setText(""+toppings.get(position).price);
-        tpHoder.ivTopping.setImageBitmap(BitmapFactory.decodeResource(context.getResources(),dummyImg[position%8]));
+        tpHoder.ivTopping.setImageResource(dummyImg[position%8]);
         tpHoder.ivClick.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
+                Animation anim = AnimationUtils.loadAnimation(context, R.anim.anim_topping_item);
+                tpHoder.ivTopping.startAnimation(anim);
+                //is not checked
                 if(!tpHoder.checkBox.isChecked()){
                     tpHoder.checkBox.setChecked(true);
+
                     checkedToppings.put(toppings.get(position).id, toppings.get(position));
-                    if(checkedToppings.size()<2){
-                        parentTV.setText(parentTV.getText()+"\t"+toppings.get(position).name);
-                    }else {
-                        parentTV.setText(parentTV.getText()+", "+toppings.get(position).name);
-                    }
+                    if(actionBar.getTitle()==null) {
+                        actionBar.setTitle(toppings.get(position).name);
+                    }else
+                        actionBar.setTitle(actionBar.getTitle() + " " + toppings.get(position).name);
 
+
+                    //is checked
                 }else{
-                    tpHoder.checkBox.setChecked(false);
 
-                    String result="토핑 \t";
+                    tpHoder.checkBox.setChecked(false);
+                    String result="";
                     checkedToppings.remove(toppings.get(position).id);
                     Iterator<String> iter = checkedToppings.keySet().iterator();
                     while(iter.hasNext()){
-                        result = result+checkedToppings.get(iter.next()).name+", ";
+                        result = result+checkedToppings.get(iter.next()).name+"  ";
                     }
-                    result = result.substring(0,result.length()-2);
-                    parentTV.setText(result);
+                    actionBar.setTitle(result);
                 }
 
             }

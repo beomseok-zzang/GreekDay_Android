@@ -25,14 +25,18 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".CounselActivity"
-            android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name=".OrderActivity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".OrderToppingActivity" />
         <activity
             android:name=".NoticeActivity"
             android:theme="@style/Theme.AppCompat.Light" />
-        <activity android:name=".CardActivity"
-            android:theme="@style/Theme.AppCompat.Light"/>
+        <activity
+            android:name=".CardActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".OrderBaseActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".BaseDetailActivity"></activity>
     </application>
 
 </manifest>
