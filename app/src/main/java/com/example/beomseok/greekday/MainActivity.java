@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             case R.id.layout_order:
-                startActivity(new Intent(this, OrderBaseActivity.class));
+                startActivity(new Intent(this, OrderActivity.class));
 
                 //overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;

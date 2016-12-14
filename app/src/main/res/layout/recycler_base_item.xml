@@ -61,18 +61,21 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <LinearLayout
-                android:id="@+id/buttonsContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/circular_button"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:padding="@dimen/activity_horizontal_margin">
 
-            </LinearLayout>
+            <CheckedTextView
+                android:id="@+id/tv_base_add_yogurt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circular_button"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checkMarkTint="@color/colorAccent"
+                android:checked="true"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="요거트 추가"
+                android:textSize="16dp" />
 
             <CheckedTextView
                 android:id="@+id/tv_base_honney"

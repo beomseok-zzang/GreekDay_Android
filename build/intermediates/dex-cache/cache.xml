@@ -394,7 +394,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="4c328c8ff5e90b8c0c0e508bb779c5a09fe72b20">
+        sha1="e695240b98a83ddbdea922c9a350c458d0aaf63a">
         <dex dex="/Users/beomseok/Desktop/GreekDay_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_44facc0ab4e74e4f8e2baa4154c8156969b2c6c2/classes.dex" />
     </item>
     <item
@@ -520,7 +520,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="0674858755b1972e8a1fb3afd4a42ccf0e8f1cfb">
+        sha1="f98d9a1aef936e5a93d92f2db8a005e36606d373">
         <dex dex="/Users/beomseok/Desktop/GreekDay_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_07d3bed01c229be7ec20f07bc34a684cdb992a26/classes.dex" />
     </item>
     <item

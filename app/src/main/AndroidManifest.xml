@@ -36,7 +36,9 @@
         <activity
             android:name=".OrderBaseActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".BaseDetailActivity"></activity>
+        <activity android:name=".BaseDetailActivity" />
+        <activity android:name=".OrderActivity"
+            android:theme="@style/MyMaterialTheme"></activity>
     </application>
 
 </manifest>

@@ -79,27 +79,25 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         public final TextView tvPrice;
         public final ImageView ivMain;
         public final LinearLayout detailLayout;
-        public final ViewGroup buttonsContainer;
+
         public final CheckedTextView tvHonney;
+        public final CheckedTextView tvAddYogurt;
         public final TextView tvAddToping;
         public final Button btnBuy;
         public final Button btnAddCart;
 
-
-        int position;
         int toppingPrice=0;
         int yogurtPrice;
 
         public ValueAnimator valueAnimator;
         public int originalHeight;
-        public float originalTextSize;
-        private Button activeButton = null;
-        private int activeValue = -1;
+
 
         public ViewHolder(final View itemView) {
             super(itemView);
             itemView.setTag(this);
             tvHonney = (CheckedTextView) itemView.findViewById(R.id.tv_base_honney);
+            tvAddYogurt=(CheckedTextView) itemView.findViewById(R.id.tv_base_add_yogurt);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_base_title);
             tvPrice = (TextView) itemView.findViewById(R.id.tv_base_price);
             ivMain = (ImageView) itemView.findViewById(R.id.iv_base_main);
@@ -108,27 +106,8 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
 
             detailLayout = (LinearLayout) itemView.findViewById(R.id.relative_base);
             tvAddToping = (TextView) itemView.findViewById(R.id.tv_add_topping);
-
-            //button selector
-            buttonsContainer = (ViewGroup) itemView.findViewById(R.id.buttonsContainer);
-            int buttonsSpacing = (int) itemView.getResources().getDimension(R.dimen.activity_horizontal_margin);
-            int buttonSize = (int) itemView.getResources().getDimension(R.dimen.button_size);
-            for (int i = 0; i < MAX_BUTTONS; i++) {
-                final int value = i + 1;
-                final Button button = (Button) LayoutInflater.
-                        from(itemView.getContext()).inflate(R.layout.circular_button_layout, buttonsContainer, false);
-                button.setText(SIZES[i]);
-                buttonsContainer.addView(button);
-
-                //Add margin between buttons manually
-                if (i != MAX_BUTTONS - 1) {
-                    buttonsContainer.addView(new Space(itemView.getContext()), new ViewGroup.LayoutParams(buttonsSpacing, buttonSize));
-                }
-            }
-            detailLayout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-            originalHeight = detailLayout.getMeasuredHeight();
-            originalTextSize = tvTitle.getTextScaleX();
-            detailLayout.getLayoutParams().height = 0;
+            originalHeight = itemView.getHeight();
+            detailLayout.getLayoutParams().height=0;
 
 
         }
@@ -154,13 +133,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         bHoder.ivMain.setImageResource(dummyImg[position % 8]);
         bHoder.tvPrice.setText(baseItems.get(position).priceSmall + " 원");
         bHoder.yogurtPrice = baseItems.get(position).priceSmall;
-        selectButton((Button) bHoder.buttonsContainer.getChildAt(0),bHoder,BaseItem.SIZE_MEDIUM);
-        bHoder.btnAddCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
         bHoder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,54 +203,27 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                 bHoder.tvHonney.setChecked(!bHoder.tvHonney.isChecked());
             }
         });
+        bHoder.tvAddYogurt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bHoder.tvAddYogurt.setChecked(!bHoder.tvAddYogurt.isChecked());
+            }
+        });
 
-        bHoder.buttonsContainer.getChildAt(0).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectButton((Button)view,bHoder,BaseItem.SIZE_SMALL);
-                bHoder.yogurtPrice = baseItems.get(position).priceSmall;
-                bHoder.tvPrice.setText(Integer.toString(bHoder.yogurtPrice+bHoder.toppingPrice)+" 원");
-
-            }
-        });
-        bHoder.buttonsContainer.getChildAt(2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectButton((Button)view,bHoder,BaseItem.SIZE_MEDIUM);
-                bHoder.yogurtPrice = baseItems.get(position).priceMedium;
-                bHoder.tvPrice.setText(Integer.toString(bHoder.yogurtPrice+bHoder.toppingPrice)+" 원");
-            }
-        });
-        bHoder.buttonsContainer.getChildAt(4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectButton((Button)view,bHoder,BaseItem.SIZE_LARGE);
-                bHoder.yogurtPrice = baseItems.get(position).priceLarge;
-                bHoder.tvPrice.setText(Integer.toString(bHoder.yogurtPrice+bHoder.toppingPrice)+" 원");
-            }
-        });
         bHoder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                int size = bHoder.activeValue;
+                int size = 0;
                 String title = (String) bHoder.tvTitle.getText();
                 boolean honey = bHoder.tvHonney.isChecked();
-                int price = baseItems.get(position).getPrice(bHoder.activeValue);
+                int price = baseItems.get(position).getPrice(0);
                 Yogurt yogurt = new Yogurt(title, size, price, honey, selectedToppings);
 
             }
         });
     }
-    private void selectButton(Button button,ViewHolder viewHolder,int value ) {
-        if (viewHolder.activeButton != null) {
-            viewHolder.activeButton.setSelected(false);
-        }
-        viewHolder.activeButton = button;
-        button.setSelected(true);
-        viewHolder.activeValue = value;
 
-    }
 
     public void setSelectedToppongs(ArrayList<Topping> toppings) {
         TextView textView = opendVh.tvAddToping;
