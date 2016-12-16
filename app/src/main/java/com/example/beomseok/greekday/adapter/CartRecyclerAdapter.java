@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.beomseok.greekday.MainActivity;
 import com.example.beomseok.greekday.R;
 import com.example.beomseok.greekday.model.Cart;
 import com.example.beomseok.greekday.model.Topping;
@@ -68,10 +67,10 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
     }
     private String getDetailStr(Yogurt yogurt){
         StringBuilder result = new StringBuilder();
-        if(yogurt.isSizeUp){
+        if(yogurt.isYogurtAdded){
             result.append("요거트 추가 ");
         }
-        if(yogurt.honey){
+        if(yogurt.isHoneyAdded){
             result.append("꿀 추가");
         }
         return result.toString();

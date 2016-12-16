@@ -1,6 +1,5 @@
 package com.example.beomseok.greekday.model;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 
 /**
@@ -36,6 +35,7 @@ public class Cart {
         for(Yogurt yogurt:this.yogurts){
             this.price +=yogurt.price;
         }
+
         return this;
     }
 }
