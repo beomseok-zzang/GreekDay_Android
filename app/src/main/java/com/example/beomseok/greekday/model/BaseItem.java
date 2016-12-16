@@ -9,37 +9,24 @@ import android.widget.Switch;
 public class BaseItem {
     public String id;
     public String title;
-    public static final int  SIZE_SMALL=1;
-    public static final int  SIZE_MEDIUM=2;
-    public static final int  SIZE_LARGE=3;
-    public int priceSmall;
-    public int priceMedium;
-    public int priceLarge;
+    public static final char  SIZE_SMALL='S';
+    public static final char  SIZE_MEDIUM='M';
+    public static final char  SIZE_LARGE='L';
+    public char size;
+    public int price;
     public BaseItem(){
 
     }
-    public BaseItem(String id,String title,int priceSmall,int priceMedium,int priceLarge){
+    public BaseItem(String id,String title,int price,char size){
         this.id = id;
         this.title = title;
-        this.priceSmall = priceSmall;
-        this.priceMedium = priceMedium;
-        this.priceLarge = priceLarge;
+        this.price= price;
+        this.size = size;
     }
-    public BaseItem(String title,int priceSmall,int priceMedium,int priceLarge){
+    public BaseItem(String title,int price,char size){
         this.title = title;
-        this.priceSmall = priceSmall;
-        this.priceMedium = priceMedium;
-        this.priceLarge = priceLarge;
+        this.price = price;
+        this.size = size;
     }
-    public int getPrice(int size){
-        switch (size){
-            case SIZE_SMALL:
-                return priceSmall;
-            case SIZE_MEDIUM:
-                return priceMedium;
-            case SIZE_LARGE:
-                return priceLarge;
-        }
-        return 0;
-    }
+
 }

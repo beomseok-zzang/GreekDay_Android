@@ -74,8 +74,6 @@ public class OrderFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
@@ -83,17 +81,16 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
-        baseItems.add(new BaseItem("1","플레인",3000,5000,6000));
-        baseItems.add(new BaseItem("2","그래놀라 바나나",3000,5000,6000));
-        baseItems.add(new BaseItem("3","그래놀라 블루베리",3000,5000,6000));
-        baseItems.add(new BaseItem("4","그래놀라 딸기",3000,5000,6000));
-        baseItems.add(new BaseItem("5","생과일믹스",3000,5000,6000));
-        baseItems.add(new BaseItem("6","그래놀라 제철과일",3000,5000,6000));
-        baseItems.add(new BaseItem("7","블루베리 호두",3000,5000,6000));
-        baseItems.add(new BaseItem("8","무화과 청포도",3000,5000,6000));
+        baseItems.add(new BaseItem("1","플레인",3000,BaseItem.SIZE_SMALL));
+        baseItems.add(new BaseItem("2","그래놀라 바나나",3000,BaseItem.SIZE_SMALL));
+        baseItems.add(new BaseItem("3","그래놀라 블루베리",3000,BaseItem.SIZE_SMALL));
+        baseItems.add(new BaseItem("4","그래놀라 딸기",3000,BaseItem.SIZE_MEDIUM));
+        baseItems.add(new BaseItem("5","생과일믹스",3000,BaseItem.SIZE_MEDIUM));
+        baseItems.add(new BaseItem("6","그래놀라 제철과일",3000,BaseItem.SIZE_LARGE));
+        baseItems.add(new BaseItem("7","블루베리 호두",3000,BaseItem.SIZE_LARGE));
+        baseItems.add(new BaseItem("8","무화과 청포도",3000,BaseItem.SIZE_LARGE));
 
-
-        adapter = new OrderBaseRecyclerAdapter(baseItems,getActivity());
+        adapter = new OrderBaseRecyclerAdapter(baseItems,this);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_base);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);

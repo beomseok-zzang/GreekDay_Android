@@ -33,12 +33,11 @@
         <activity
             android:name=".CardActivity"
             android:theme="@style/Theme.AppCompat.Light" />
-        <activity
-            android:name=".OrderBaseActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".BaseDetailActivity" />
-        <activity android:name=".OrderActivity"
-            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".OrderActivity"
+            android:theme="@style/MyMaterialTheme" />
+        <activity android:name=".CartActivity"></activity>
     </application>
 
 </manifest>

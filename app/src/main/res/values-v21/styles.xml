@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -14,8 +14,7 @@
     <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentTransitions">true</item>
     </style>
-    <style name="MyMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/colorAccent</item>
+    <style name="MyMaterialTheme" parent="AppTheme">
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>

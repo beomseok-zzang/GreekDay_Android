@@ -1,6 +1,5 @@
 package com.example.beomseok.greekday;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -8,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.beomseok.greekday.util.GreekFireBaseDatabase;
+import com.example.beomseok.greekday.model.Cart;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    public static final Cart CART = new Cart();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

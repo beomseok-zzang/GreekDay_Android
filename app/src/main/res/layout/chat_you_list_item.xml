@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="24dp"
+    android:layout_marginTop="24dp">
+
+    <LinearLayout
+        android:id="@+id/contentWithBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/chat_bubble_you"
+        android:orientation="vertical"
+        android:layout_marginLeft="24dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="240dp"
+            android:text="안뇽??"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="8dp"
+            android:text="안녕?"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <com.example.beomseok.greekday.lib.MaskableFrameLayout
+
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        app:mask="@drawable/masking_masking_01"
+        app:porterduffxfermode="DST_IN">
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/logo"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop" />
+    </com.example.beomseok.greekday.lib.MaskableFrameLayout>
+
+</RelativeLayout>

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="46dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:transcriptMode="normal" />
 
     <RelativeLayout
@@ -58,43 +58,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@color/colorPrimary">
-
-            <ImageView
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
-
-            <TextView
-                android:id="@+id/txt_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textColor="@color/colorWhite" />
-
-            <FrameLayout
-                android:id="@+id/frame_post_item"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_alignParentRight="true"
-                android:padding="8dp">
-
-                <com.example.beomseok.greekday.lib.RoundImageView
-                    android:id="@+id/btn_post_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/sample_profile" />
-            </FrameLayout>
-
-        </RelativeLayout>
+            android:layout_height="?attr/actionBarSize"/>
 
         <View
             android:layout_width="match_parent"

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.beomseok.greekday.util.FireUtils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements
     private static final int RC_SIGN_IN = 9001;
 
     // [START declare_auth]
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
     // [END declare_auth]
 
     // [START declare_auth_listener]
@@ -54,10 +55,7 @@ public class LoginActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // Views
-       // mStatusTextView = (TextView) findViewById(R.id.status);
-        //mDetailTextView = (TextView) findViewById(R.id.detail);
+        FireUtils fireUtils = FireUtils.getInstance();
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -88,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    FireUtils.setUser(user);
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                 } else {
