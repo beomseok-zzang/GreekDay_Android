@@ -10,7 +10,7 @@ import java.util.Map;
 public class Chat {
     long timeStamp;
     String lastMessage;
-    String messageId;
+    String messageId=null;
     Chat(){
     }
 

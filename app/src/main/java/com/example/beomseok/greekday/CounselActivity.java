@@ -1,5 +1,6 @@
 package com.example.beomseok.greekday;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
@@ -10,6 +11,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +21,7 @@ import com.example.beomseok.greekday.model.Chat;
 import com.example.beomseok.greekday.model.Message;
 import com.example.beomseok.greekday.util.FireUtils;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class CounselActivity extends AppCompatActivity {
@@ -35,10 +40,11 @@ public class CounselActivity extends AppCompatActivity {
     public static final String ITEMPOST_KEY = "2320";
     public static final String ADMIN_ID = "admin";
     private ChatRecyclerAdapter adapter;
-
+    private ChildEventListener postListener;
     ArrayList<Message> messages;
     private RecyclerView recyclerView;
-
+    private Button btnSubmit;
+    private EditText editMessage;
     private DatabaseReference ref;
     private String welcomeMessage="안녕하세요 반갑습니다. 저는 그릭데이 사장입니다. 어떤 문의사항이든 편하게 말씀해주세요";
 
@@ -48,7 +54,9 @@ public class CounselActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counsel);
-
+        //set view references
+        btnSubmit = (Button) findViewById(R.id.btn_submit);
+        editMessage = (EditText) findViewById(R.id.edit_message);
         //setting toolbar UI
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,33 +75,43 @@ public class CounselActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        ref = FireUtils.getDatabaseReference().child("chat");
-        ref.setValue(FireUtils.getUid());
-        Map<String, Chat> chat = new HashMap<String, Chat>();
-        chat.put(FireUtils.getUid(), new Chat(System.currentTimeMillis(),welcomeMessage));
-        ref.setValue(chat);
-        Map<String, Message> messageMap = new HashMap<String, Message>();
-        messageMap.put("messageId", new Message(true,welcomeMessage,System.currentTimeMillis()));
-        ref.child(FireUtils.getUid()).setValue(messageMap);
 
-
-        ValueEventListener postListener = new ValueEventListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Message message = dataSnapshot.getValue(Message.class);
-                adapter.addItem(message);
+            public void onClick(View view) {
+                String text=editMessage.getText().toString();
+                if(text==null||text.equals("")){
+                    return;
+                }
+                Message message = new Message(false,text,System.currentTimeMillis());
+                ref.child(FireUtils.getUid()).child("lastMessage").setValue(message.text);
+                ref.child(FireUtils.getUid()).child("timeStamp").setValue(message.date);
+                ref.child(FireUtils.getUid()).child("messageId").push().setValue(message);
+                editMessage.setText("");
+            }
+        });
+        //reference 초기화
 
+        postListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Message message = dataSnapshot.getValue(Message.class);
+                    adapter.addItem(message);
+                    recyclerView.scrollToPosition(messages.size()-1);
             }
 
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-
-                // ...
+                Snackbar.make(editMessage,"메시지 전송에 실패했습니다.",1500).setAction("Action", null).show();
             }
         };
-        ref.child(FireUtils.getUid()).child("messageId").addValueEventListener(postListener);
+
 
 
 
@@ -102,40 +120,31 @@ public class CounselActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //상단 라운드 아이템뷰~
-/*        itemListener = new com.google.firebase.database.ValueEventListener() {
+        ref = FireUtils.getDatabaseReference().child("chat");
+        //처음이라면 환영 메시지 생성
+        ref.child(FireUtils.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()){
+                    Map<String, Chat> chat = new HashMap<String, Chat>();
+                    chat.put(FireUtils.getUid(), new Chat(System.currentTimeMillis(),welcomeMessage));
+                    ref.setValue(chat);
+                    ref.child(FireUtils.getUid()).child("messageId").push().setValue(new Message(true,welcomeMessage,System.currentTimeMillis()));
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        };
-        chatAboutItemQuery.addListenerForSingleValueEvent(itemListener);
-        getQuery(mDatabase).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                recyclerView.smoothScrollToPosition(adapter.getItemCount());
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });*/
+        });
+
+        ref.child(FireUtils.getUid()).child("messageId").addChildEventListener(postListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-  /*      if(itemListener!=null) {
-            chatAboutItemQuery.removeEventListener(itemListener);
-        }*/
+
     }
 
     private Query getQuery(DatabaseReference mDatabase) {

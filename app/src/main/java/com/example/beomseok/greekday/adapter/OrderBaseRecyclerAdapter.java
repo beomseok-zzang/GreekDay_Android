@@ -32,6 +32,8 @@ import com.example.beomseok.greekday.model.Topping;
 import com.example.beomseok.greekday.model.Yogurt;
 
 import java.util.ArrayList;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  * Created by beomseok on 2016. 12. 7..
@@ -53,6 +55,53 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
 
 
 
+    private class BaseOnclickListener implements View.OnClickListener{
+        final int position;
+        final OrderBaseRecyclerAdapter.ViewHolder viewHolder;
+        BaseOnclickListener(final int position, final OrderBaseRecyclerAdapter.ViewHolder viewHolder){
+            this.position= position;
+            this.viewHolder = viewHolder;
+        }
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.iv_base_main:
+                    Intent i = new Intent(context.getContext(), BaseDetailActivity.class);
+                    ActivityOptions transitionOptions = ActivityOptions.makeSceneTransitionAnimation(context.getActivity(),view,"asp");
+                    context.startActivity(i,transitionOptions.toBundle());
+                    break;
+
+                case R.id.tv_add_topping:
+                    context.startActivityForResult(new Intent(context.getContext(), OrderToppingActivity.class), OrderActivity.REQUEST_CODE);
+                    context.getActivity().overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    break;
+
+                case R.id.tv_base_honney:
+                    CheckedTextView ctv1 = (CheckedTextView) view;
+                    ctv1.setChecked(!ctv1.isChecked());
+                    break;
+
+                case R.id.tv_base_add_yogurt:
+                    CheckedTextView ctv2 = (CheckedTextView) view;
+                    ctv2.setChecked(!ctv2.isChecked());
+                    break;
+                case R.id.btn_base_buy:
+                    Yogurt yogurt1 = makeYougurt(position,viewHolder);
+                    MainActivity.CART.addCart(yogurt1);
+                    context.startActivity(new Intent(context.getContext(), CartActivity.class));
+                    break;
+                case R.id.btn_base_addcart:
+                    Yogurt yogurt2 = makeYougurt(position,viewHolder);
+                    MainActivity.CART.addCart(yogurt2);
+                    Snackbar.make(view,"\'"+yogurt2.title.toString()+"\' 장바구니에 담겼습니다",1500).setAction("Action", null).show();
+                    break;
+
+            }
+        }
+    }
+
+    //
     public OrderBaseRecyclerAdapter(ArrayList<BaseItem> baseItems, Fragment context) {
         if (baseItems == null) {
             throw new IllegalArgumentException(
@@ -126,10 +175,10 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final ViewHolder bHoder = holder;
-        //bHoder.ivMain.setImageResource((dummyImg[position%8]));
 
         bHoder.tvTitle.setText(baseItems.get(position).title);
         bHoder.ivMain.setImageResource(dummyImg[position % 8]);
+        bHoder.ivMain.setClickable(false);
         bHoder.tvPrice.setText(baseItems.get(position).price + " 원");
         bHoder.yogurtPrice = baseItems.get(position).price;
 
@@ -145,9 +194,11 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                         opendVh.tvTitle.setTextSize(14f);
                         opendVh.tvPrice.setText(Integer.toString(baseItems.get(position).price));
                         opendVh.detailLayout.requestLayout();
+                        opendVh.ivMain.setClickable(false);
                     }
                     opendVh = (ViewHolder) view.getTag();
                     //set opened value
+                    bHoder.ivMain.setClickable(true);
                     selectedToppings.clear();
                     openedPositon = position;
                     opendVh.tvAddToping.setText("토핑 추가");
@@ -157,10 +208,12 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                 }
                 //start collapse
                 else {
+                    bHoder.ivMain.setClickable(false);
                     openedPositon = DEFAULT_POSTION;
                     opendVh = null;
                     bHoder.tvPrice.setText(Integer.toString(baseItems.get(position).price));
                     bHoder.valueAnimator = ValueAnimator.ofInt(bHoder.originalHeight, 0);
+                    bHoder.ivMain.setClickable(false);
                 }
                 bHoder.valueAnimator.setDuration(300);
                 bHoder.valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -178,54 +231,14 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                 bHoder.valueAnimator.start();
 
             }
-        }); ;
-        bHoder.ivMain.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context.getContext(), BaseDetailActivity.class);
-                ActivityOptions transitionOptions = ActivityOptions.makeSceneTransitionAnimation(context.getActivity(),view,"asp");
-                context.startActivity(i,transitionOptions.toBundle());
-
-            }
         });
-        bHoder.tvAddToping.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                context.startActivityForResult(new Intent(context.getContext(), OrderToppingActivity.class), OrderActivity.REQUEST_CODE);
-                context.getActivity().overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-
-            }
-        });
-        bHoder.tvHonney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bHoder.tvHonney.setChecked(!bHoder.tvHonney.isChecked());
-            }
-        });
-        bHoder.tvAddYogurt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bHoder.tvAddYogurt.setChecked(!bHoder.tvAddYogurt.isChecked());
-            }
-        });
-
-        bHoder.btnBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Yogurt yogurt = makeYougurt(position,bHoder);
-                MainActivity.CART.addCart(yogurt);
-                context.startActivity(new Intent(context.getContext(), CartActivity.class));
-            }
-        });
-        bHoder.btnAddCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Yogurt yogurt = makeYougurt(position,bHoder);
-                MainActivity.CART.addCart(yogurt);
-                Snackbar.make(view,"\'"+yogurt.title.toString()+"\' 장바구니에 담겼습니다",1500).setAction("Action", null).show();
-            }
-        });
+        BaseOnclickListener baseOnclickListener = new BaseOnclickListener(position,bHoder);
+        bHoder.ivMain.setOnClickListener(baseOnclickListener);
+        bHoder.tvAddToping.setOnClickListener(baseOnclickListener);
+        bHoder.tvHonney.setOnClickListener(baseOnclickListener);
+        bHoder.tvAddYogurt.setOnClickListener(baseOnclickListener);
+        bHoder.btnBuy.setOnClickListener(baseOnclickListener);
+        bHoder.btnAddCart.setOnClickListener(baseOnclickListener);
     }
     private Yogurt makeYougurt(int position,ViewHolder vh){
         char size = baseItems.get(position).size;
