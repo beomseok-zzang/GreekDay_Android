@@ -9,103 +9,137 @@
     android:weightSum="10"
     tools:context="com.example.beomseok.greekday.MainActivity">
 
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/main_main"
-        android:adjustViewBounds="true" />
-    <TextView
-        android:text="@string/open_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorGrey"
-        android:padding="8dp"
-        android:id="@+id/textView" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/greek_main_img"/>
+        <com.john.waveview.WaveView
+            android:id="@+id/wave_view"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:progress="100"
+            android:background="#c34aa6ef"
+            android:layout_gravity="bottom"
+            app:wave_length="middle"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="bottom|left"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_margin="16dp"
+            android:text="안녕하세요 오종민님"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_margin="8dp"
+            android:text="OPEN"
+            android:layout_gravity="right"
+            android:textColor="@color/colorWhite"/>
+
+    </FrameLayout>
+
+
 
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_weight="4"
-        android:weightSum="2"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <RelativeLayout
+            android:id="@+id/layout_card"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:clickable="true"
-            android:background="@drawable/main_ripple"
             android:layout_weight="1"
-            android:id="@+id/layout_card">
+            android:background="@drawable/main_ripple"
+            android:clickable="true"
+            android:gravity="center">
+
             <ImageView
                 android:id="@+id/img_card"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/credit_card_icon"
-                android:adjustViewBounds="true" />
+                android:adjustViewBounds="true"
+                app:srcCompat="@mipmap/credit_card_icon" />
+
             <TextView
-                android:text="0 ￦"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView2"
-                android:layout_below="@id/img_card" />
+                android:layout_below="@id/img_card"
+                android:textSize="16sp"
+                android:text="0 ￦" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:clickable="true"
-            android:background="@drawable/main_ripple"
+            android:id="@+id/layout_order"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/layout_order">
+            android:background="@drawable/main_ripple"
+            android:clickable="true"
+            android:gravity="center">
+
             <TextView
-                android:text="@string/main_order"
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView3" />
+                android:textSize="16sp"
+                android:text="@string/main_order" />
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="4"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:background="@drawable/main_border"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@drawable/main_border"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <RelativeLayout
-            android:clickable="true"
-            android:background="@drawable/main_ripple"
+            android:id="@+id/layout_counsel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/layout_counsel">
+            android:background="@drawable/main_ripple"
+            android:clickable="true"
+            android:gravity="center">
 
             <TextView
-                android:text="@string/main_counsel"
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView4" />
+                android:textSize="16sp"
+                android:text="@string/main_counsel" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/layout_notice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_weight="1"
-            android:clickable="true"
             android:background="@drawable/main_ripple"
-            android:id="@+id/layout_notice">
+            android:clickable="true"
+            android:gravity="center">
 
             <TextView
-                android:text="@string/main_notice"
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView5" />
+                android:textSize="16sp"
+                android:text="@string/main_notice" />
         </RelativeLayout>
     </LinearLayout>
 

@@ -50,7 +50,7 @@
             android:id="@+id/img_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/logo"
+            android:background="@color/colorPrimaryDark"
             android:layout_alignParentLeft="true"
             android:scaleType="centerCrop" />
     </com.example.beomseok.greekday.lib.MaskableFrameLayout>

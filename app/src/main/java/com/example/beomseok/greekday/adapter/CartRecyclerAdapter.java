@@ -2,11 +2,13 @@ package com.example.beomseok.greekday.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.beomseok.greekday.MainActivity;
 import com.example.beomseok.greekday.R;
 import com.example.beomseok.greekday.model.Cart;
 import com.example.beomseok.greekday.model.Topping;
@@ -36,6 +38,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
 
         return new CartRecyclerAdapter.ViewHolder(itemView);
     }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView tvTitle;
         public final TextView tvPrice;
@@ -52,38 +55,45 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
         }
 
     }
+
     public void removeItem(int position) {
-        yogurts.remove(position);
+        MainActivity.CART.removeYogurt(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, yogurts.size());
     }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ViewHolder cHolder = holder;
-        cHolder.tvTitle.setText(yogurts.get(position).title);
-        cHolder.tvPrice.setText(Integer.toString(yogurts.get(position).price));
+        cHolder.tvTitle.setText(Integer.toString(position + 1) + ". " + yogurts.get(position).title);
+        cHolder.tvPrice.setText(Integer.toString(yogurts.get(position).price) + " 원");
         cHolder.tvDetailInfo.setText(getDetailStr(yogurts.get(position)));
         cHolder.tvToppings.setText(getToppingStr(yogurts.get(position)));
     }
-    private String getDetailStr(Yogurt yogurt){
+
+    private String getDetailStr(Yogurt yogurt) {
         StringBuilder result = new StringBuilder();
-        if(yogurt.isYogurtAdded){
-            result.append("요거트 추가 ");
+        if (yogurt.isYogurtAdded) {
+            result.append("요거트 ");
         }
-        if(yogurt.isHoneyAdded){
-            result.append("꿀 추가");
-        }
-        return result.toString();
-    }
-    private String getToppingStr(Yogurt yogurt){
-        StringBuilder result = new StringBuilder();
-        for(Topping topping:yogurt.toppings){
-            result.append(topping.name+" ");
+        if (yogurt.isHoneyAdded) {
+            result.append("꿀 ");
         }
         return result.toString();
     }
 
+    private String getToppingStr(Yogurt yogurt) {
+        StringBuilder result = new StringBuilder();
+        if (yogurt.toppings.size() < 1)
+            return "";
+        else
+            result.append("추가토핑: ");
+        for (Topping topping : yogurt.toppings) {
+            result.append(topping.name + " ");
+        }
 
+        return result.toString();
+    }
 
 
     @Override

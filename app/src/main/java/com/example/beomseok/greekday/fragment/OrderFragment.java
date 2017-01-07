@@ -145,7 +145,7 @@ public class OrderFragment extends Fragment {
             //경고 메세지를 없에주는 어노테이션
             @SuppressWarnings("unchecked")
             ArrayList<Topping> l = (ArrayList<Topping>)list;
-            adapter.setSelectedToppongs(l);
+            adapter.setSelectedToppings(l);
         }
     }
 }

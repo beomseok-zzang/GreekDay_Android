@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Yogurt {
     public String id;
-    public char size;
+    public String size;
     public String title;
     public int price;
     public boolean isHoneyAdded;
@@ -18,7 +18,7 @@ public class Yogurt {
 
     }
     public Yogurt(String title, char size,  int price, boolean isHoneyAdded,boolean isYogurtAdded, ArrayList<Topping> toppings) {
-        this.size = size;
+        this.size = Character.toString(size);
         this.title = title;
         this.price = price;
         this.isHoneyAdded = isHoneyAdded;
@@ -27,7 +27,7 @@ public class Yogurt {
     }
     public Yogurt(String id, String title, char size,  int price, boolean isHoneyAdded,boolean isYogurtAdded, ArrayList<Topping> toppings) {
         this.id = id;
-        this.size = size;
+        this.size = Character.toString(size);
         this.title = title;
         this.price = price;
         this.isHoneyAdded = isHoneyAdded;

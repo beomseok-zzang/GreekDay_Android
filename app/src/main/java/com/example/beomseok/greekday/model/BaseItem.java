@@ -2,11 +2,13 @@ package com.example.beomseok.greekday.model;
 
 import android.widget.Switch;
 
+import java.io.Serializable;
+
 /**
  * Created by beomseok on 2016. 12. 10..
  */
 
-public class BaseItem {
+public class BaseItem implements Serializable {
     public String id;
     public String title;
     public static final char  SIZE_SMALL='S';

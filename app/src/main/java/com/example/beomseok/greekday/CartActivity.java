@@ -1,5 +1,6 @@
 package com.example.beomseok.greekday;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -19,9 +20,13 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.beomseok.greekday.adapter.CartRecyclerAdapter;
 import com.example.beomseok.greekday.adapter.OrderBaseRecyclerAdapter;
+import com.example.beomseok.greekday.model.Yogurt;
+import com.example.beomseok.greekday.util.LastQuestionActivity;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -29,29 +34,56 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Toolbar toolbar;
     private Paint p;
+    TextView tvTotalPrice;
+    TextView tvBoughtNumber;
+    Button btnBuy;
     Bitmap icon;
+    int totalPrice=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         p = new Paint();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        tvBoughtNumber = (TextView) findViewById(R.id.tv_bought_number);
+        tvTotalPrice = (TextView) findViewById(R.id.tv_total_price);
+        btnBuy = (Button) findViewById(R.id.btn_buy);
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LastQuestionActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_right,R.anim.anim_slide_out_left);
+            }
+        });
 
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("장바구니");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //What to do on back clicked
                 onBackPressed();
-
             }
         });
         adapter = new CartRecyclerAdapter(MainActivity.CART,getApplicationContext());
         recyclerView = (RecyclerView) findViewById(R.id.recycler_cart);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
+
         initSwipe();
+
+    }
+
+
+    private void setTextViews(){
+        totalPrice = 0;
+        tvBoughtNumber.setText("총 "+Integer.toString(MainActivity.CART.getYogurtSize())+"개");
+        for(Yogurt yogurt:MainActivity.CART.getYogurts()){
+            totalPrice+=yogurt.price;
+        }
+        tvTotalPrice.setText(Integer.toString(totalPrice)+"원");
     }
 
     @Override
@@ -60,8 +92,11 @@ public class CartActivity extends AppCompatActivity {
         //notice is empty cart
         if(MainActivity.CART.getYogurtSize()<1)
             findViewById(R.id.layout_notice_empty).setVisibility(View.VISIBLE);
-        else
+        else {
             findViewById(R.id.layout_notice_empty).setVisibility(View.GONE);
+            setTextViews();
+        }
+
     }
 
     private void initSwipe(){
@@ -79,6 +114,7 @@ public class CartActivity extends AppCompatActivity {
 
                 if (direction == ItemTouchHelper.LEFT){
                     adapter.removeItem(position);
+                    setTextViews();
                 }else {
 
                 }
@@ -104,7 +140,6 @@ public class CartActivity extends AppCompatActivity {
                         RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
                         c.drawRect(background,p);
                         RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
-
                         c.drawBitmap(icon,null,icon_dest,p);
                     }
                 }

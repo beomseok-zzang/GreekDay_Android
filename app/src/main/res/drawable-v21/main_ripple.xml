@@ -6,12 +6,9 @@
     <!-- for Button -->
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="3dp"/>
-            <stroke android:color="@color/colorGrey" android:width="2dp"
-                android:dashWidth="1dp" android:dashGap="2dp"/>
+            <stroke android:color="@color/colorLightAccent" android:width="2dp" />
             <solid android:color="@color/colorWhite"/>
         </shape>
-
     </item>
 
 </ripple>

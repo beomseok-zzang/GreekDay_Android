@@ -1,5 +1,6 @@
 package com.example.beomseok.greekday;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.beomseok.greekday.model.Cart;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final Cart CART = new Cart();
@@ -21,6 +23,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.layout_notice).setOnClickListener(this);
 
     }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -36,8 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.layout_order:
                 startActivity(new Intent(this, OrderActivity.class));
-
-                //overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
             case R.id.layout_notice:
                 startActivity(new Intent(this, NoticeActivity.class));

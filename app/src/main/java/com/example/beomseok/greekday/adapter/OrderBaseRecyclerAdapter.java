@@ -11,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.beomseok.greekday.BaseDetailActivity;
 import com.example.beomseok.greekday.CartActivity;
 import com.example.beomseok.greekday.MainActivity;
@@ -35,6 +37,9 @@ import java.util.ArrayList;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 /**
  * Created by beomseok on 2016. 12. 7..
  */
@@ -45,14 +50,24 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
     private ArrayList<BaseItem> baseItems;
 
     private static Fragment context;
-    private int dummyImg[] = {R.mipmap.sample_1, R.mipmap.sample_2, R.mipmap.sample_3, R.mipmap.sample_4, R.mipmap.sample_5
-            , R.mipmap.sample_6, R.mipmap.sample_7, R.mipmap.sample_8};
+    private int dummyImg[] = {R.mipmap.sample_base,R.mipmap.sample_banana,R.mipmap.sample_blueberry,R.mipmap.sample_mango
+            ,R.mipmap.sample_peaneut,R.mipmap.sample_insam,R.mipmap.sameple_base2,R.mipmap.sample_base3};
 
-    private ArrayList<Topping> selectedToppings;
+    ArrayList<Topping> selectedToppings;
     public static final int DEFAULT_POSTION = -1;
     public static int openedPositon = DEFAULT_POSTION;
     public static ViewHolder opendVh;
 
+    public OrderBaseRecyclerAdapter(ArrayList<BaseItem> baseItems, Fragment context) {
+        if (baseItems == null) {
+            throw new IllegalArgumentException(
+                    "modelData must not be null");
+        }
+        selectedToppings = new ArrayList<Topping>();
+        this.context = context;
+        this.baseItems = baseItems;
+
+    }
 
 
     private class BaseOnclickListener implements View.OnClickListener{
@@ -67,9 +82,10 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.iv_base_main:
-                    Intent i = new Intent(context.getContext(), BaseDetailActivity.class);
+                    Intent intent = new Intent(context.getContext(), BaseDetailActivity.class);
+                    intent.putExtra("base_object",baseItems.get(position));
                     ActivityOptions transitionOptions = ActivityOptions.makeSceneTransitionAnimation(context.getActivity(),view,"asp");
-                    context.startActivity(i,transitionOptions.toBundle());
+                    context.startActivity(intent,transitionOptions.toBundle());
                     break;
 
                 case R.id.tv_add_topping:
@@ -88,12 +104,12 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                     break;
                 case R.id.btn_base_buy:
                     Yogurt yogurt1 = makeYougurt(position,viewHolder);
-                    MainActivity.CART.addCart(yogurt1);
+                    MainActivity.CART.addYogurt(yogurt1);
                     context.startActivity(new Intent(context.getContext(), CartActivity.class));
                     break;
                 case R.id.btn_base_addcart:
                     Yogurt yogurt2 = makeYougurt(position,viewHolder);
-                    MainActivity.CART.addCart(yogurt2);
+                    MainActivity.CART.addYogurt(yogurt2);
                     Snackbar.make(view,"\'"+yogurt2.title.toString()+"\' 장바구니에 담겼습니다",1500).setAction("Action", null).show();
                     break;
 
@@ -102,16 +118,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
     }
 
     //
-    public OrderBaseRecyclerAdapter(ArrayList<BaseItem> baseItems, Fragment context) {
-        if (baseItems == null) {
-            throw new IllegalArgumentException(
-                    "modelData must not be null");
-        }
-        selectedToppings = new ArrayList<Topping>();
-        this.context = context;
-        this.baseItems = baseItems;
 
-    }
 
     /**
      * Interface for receiving click events from cells.
@@ -132,7 +139,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         public final TextView tvAddToping;
         public final Button btnBuy;
         public final Button btnAddCart;
-
+        public final ArrayList<Topping> toppings;
         int toppingPrice=0;
         int yogurtPrice;
 
@@ -150,7 +157,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
             ivMain = (ImageView) itemView.findViewById(R.id.iv_base_main);
             btnAddCart = (Button) itemView.findViewById(R.id.btn_base_addcart);
             btnBuy = (Button) itemView.findViewById(R.id.btn_base_buy);
-
+            toppings = new ArrayList<Topping>();
             detailLayout = (LinearLayout) itemView.findViewById(R.id.relative_base);
             tvAddToping = (TextView) itemView.findViewById(R.id.tv_add_topping);
             detailLayout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
@@ -177,8 +184,8 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         final ViewHolder bHoder = holder;
 
         bHoder.tvTitle.setText(baseItems.get(position).title);
-        bHoder.ivMain.setImageResource(dummyImg[position % 8]);
-        bHoder.ivMain.setClickable(false);
+        //bHoder.ivMain.setImageResource(dummyImg[position % 8]);
+        Glide.with(context).load(dummyImg[position % 8]).into(bHoder.ivMain);
         bHoder.tvPrice.setText(baseItems.get(position).price + " 원");
         bHoder.yogurtPrice = baseItems.get(position).price;
 
@@ -196,10 +203,11 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                         opendVh.detailLayout.requestLayout();
                         opendVh.ivMain.setClickable(false);
                     }
+
+                    bHoder.toppings.clear();
                     opendVh = (ViewHolder) view.getTag();
                     //set opened value
                     bHoder.ivMain.setClickable(true);
-                    selectedToppings.clear();
                     openedPositon = position;
                     opendVh.tvAddToping.setText("토핑 추가");
                     //set open animation
@@ -208,10 +216,11 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                 }
                 //start collapse
                 else {
+
                     bHoder.ivMain.setClickable(false);
                     openedPositon = DEFAULT_POSTION;
                     opendVh = null;
-                    bHoder.tvPrice.setText(Integer.toString(baseItems.get(position).price));
+                    bHoder.tvPrice.setText(Integer.toString(baseItems.get(position).price)+" 원");
                     bHoder.valueAnimator = ValueAnimator.ofInt(bHoder.originalHeight, 0);
                     bHoder.ivMain.setClickable(false);
                 }
@@ -234,6 +243,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         });
         BaseOnclickListener baseOnclickListener = new BaseOnclickListener(position,bHoder);
         bHoder.ivMain.setOnClickListener(baseOnclickListener);
+        bHoder.ivMain.setClickable(false);
         bHoder.tvAddToping.setOnClickListener(baseOnclickListener);
         bHoder.tvHonney.setOnClickListener(baseOnclickListener);
         bHoder.tvAddYogurt.setOnClickListener(baseOnclickListener);
@@ -243,25 +253,31 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
     private Yogurt makeYougurt(int position,ViewHolder vh){
         char size = baseItems.get(position).size;
         String title = (String) vh.tvTitle.getText();
+        int price = baseItems.get(position).price;
         boolean honey = vh.tvHonney.isChecked();
         boolean isSizeUp = vh.tvAddYogurt.isChecked();
-        int price = baseItems.get(position).price;
-        return new Yogurt(title, size, price, honey,isSizeUp ,selectedToppings);
+        Log.d("ddd",Integer.toString(vh.toppings.size()));
+        for(int i=0;i<vh.toppings.size();i++)
+            price+=vh.toppings.get(i).price;
+
+        return new Yogurt(title, size, price, honey,isSizeUp ,(ArrayList<Topping>) vh.toppings.clone());
     }
 
-    public void setSelectedToppongs(ArrayList<Topping> toppings) {
+    public void setSelectedToppings(ArrayList<Topping> toppings) {
         TextView textView = opendVh.tvAddToping;
         StringBuilder result = new StringBuilder();
         int totalPrice=0;
+        opendVh.toppings.clear();
         if (toppings == null ||toppings.size()<1) {
             result.append("토핑추가");
-            selectedToppings.clear();
+            Log.d("dddy",Integer.toString(selectedToppings.size()));
         } else {
-            selectedToppings = toppings;
+            opendVh.toppings.addAll(toppings);
             for (Topping tp : toppings) {
                 result.append(tp.name + " ");
                 totalPrice+=tp.price;
             }
+
         }
         opendVh.toppingPrice = totalPrice;
         opendVh.tvPrice.setText(Integer.toString(opendVh.toppingPrice+opendVh.yogurtPrice)+" 원");

@@ -1,10 +1,15 @@
 package com.example.beomseok.greekday.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by 김승욱 on 2016-12-16.
  */
 
-public class Notice {
+public class Notice implements Serializable {
 
     public String title;
     public long timestamp;
