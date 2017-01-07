@@ -2,13 +2,10 @@ package com.example.beomseok.greekday;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,16 +14,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.beomseok.greekday.adapter.CartRecyclerAdapter;
-import com.example.beomseok.greekday.adapter.OrderBaseRecyclerAdapter;
 import com.example.beomseok.greekday.model.Yogurt;
-import com.example.beomseok.greekday.util.LastQuestionActivity;
 
 public class CartActivity extends AppCompatActivity {
 

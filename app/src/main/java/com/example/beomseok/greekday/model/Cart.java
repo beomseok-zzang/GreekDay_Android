@@ -1,7 +1,5 @@
 package com.example.beomseok.greekday.model;
 
-import com.example.beomseok.greekday.util.FireUtils;
-
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -34,7 +32,7 @@ public class Cart extends Observable {
     }
     public Order startOrder(boolean isPackaged){
         timeStamp = System.currentTimeMillis();
-        userId = FireUtils.getUid();
+        userId = "";
         this.price = 0;
         for(Yogurt yogurt:this.yogurts){
             this.price +=yogurt.price;

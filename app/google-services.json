@@ -1,21 +1,19 @@
 {
   "project_info": {
-    "project_number": "772560533755",
-    "firebase_url": "https://greekday-ce7c2.firebaseio.com",
-    "project_id": "greekday-ce7c2",
-    "storage_bucket": "greekday-ce7c2.appspot.com"
+    "project_number": "64021238189",
+    "project_id": "centered-binder-134109"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:772560533755:android:cd3182c00c2fd08c",
+        "mobilesdk_app_id": "1:64021238189:android:cd3182c00c2fd08c",
         "android_client_info": {
           "package_name": "com.example.beomseok.greekday"
         }
       },
       "oauth_client": [
         {
-          "client_id": "772560533755-9mksjusa3prqlgbgkut23kqo3rfmmnhf.apps.googleusercontent.com",
+          "client_id": "64021238189-uud4agfmbi3f7ru3ekh4pbthkqbcf05l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.beomseok.greekday",
@@ -23,13 +21,13 @@
           }
         },
         {
-          "client_id": "772560533755-uek3rm699pmgq8ie68kpln7maq2upft1.apps.googleusercontent.com",
+          "client_id": "64021238189-2eqheh5rj2o1gdlrln5agq01u250tp4g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBdiyVluD0M_JUBubzIJLLQpisO56oyPRk"
+          "current_key": "AIzaSyAXeVdQ40Nx7rZN_3fHP3PlSFpYaL-uuaU"
         }
       ],
       "services": {
@@ -37,16 +35,11 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "772560533755-uek3rm699pmgq8ie68kpln7maq2upft1.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 2
+          "status": 1
         }
       }
     }
