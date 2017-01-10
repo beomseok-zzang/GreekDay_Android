@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.beomseok.greekday.fragment.OrderFragment;
+import com.example.beomseok.greekday.util.NetworkTask;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.util.ArrayList;
@@ -92,9 +93,9 @@ public class OrderActivity extends AppCompatActivity implements OrderFragment.On
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OrderFragment(), "small");
-        adapter.addFragment(new OrderFragment(), "medium");
-        adapter.addFragment(new OrderFragment(), "large");
+        adapter.addFragment(OrderFragment.getInstance(NetworkTask.BASE_SMALL), "small");
+        adapter.addFragment(OrderFragment.getInstance(NetworkTask.BASE_MEDIUM), "medium");
+        adapter.addFragment(OrderFragment.getInstance(NetworkTask.BASE_LARGE), "large");
         viewPager.setAdapter(adapter);
     }
 

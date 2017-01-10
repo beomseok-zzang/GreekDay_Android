@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.beomseok.greekday.model.User;
+import com.example.beomseok.greekday.util.GLOBAL;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements
 
             if (result.isSuccess()) {
                 GreekDayApplication myApp = (GreekDayApplication) getApplication();
-                myApp.setuserId(result.getSignInAccount().getEmail());
+                GLOBAL.userId =result.getSignInAccount().getEmail();
                 Intent intent = new Intent(this, SelectNickNameActivity.class);
                 intent.putExtra("userInfo",new User(result.getSignInAccount().getEmail()));
                 startActivity(intent);

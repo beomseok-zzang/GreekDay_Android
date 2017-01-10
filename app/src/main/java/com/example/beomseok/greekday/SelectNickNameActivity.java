@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.beomseok.greekday.model.User;
+import com.example.beomseok.greekday.util.NetWorkListener;
 import com.example.beomseok.greekday.util.NetworkTask;
 import com.google.firebase.database.DatabaseReference;
 
@@ -18,7 +20,6 @@ public class SelectNickNameActivity extends AppCompatActivity {
     CardView cardView;
     EditText editText1;
     EditText editText2;
-    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +43,24 @@ public class SelectNickNameActivity extends AppCompatActivity {
         cardView = (CardView) findViewById(R.id.btn_ok);
         editText1 = (EditText) findViewById(R.id.editText_nickname);
         editText2 = (EditText) findViewById(R.id.editText_phone_number);
+
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (editText1.getText().toString() == null || editText1.getText().toString().equals("") || editText2.getText().toString() == null || editText2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "빈칸을 채워주세요", Toast.LENGTH_SHORT).show();
-                    NetworkTask networkTask = new NetworkTask();
+                    NetworkTask networkTask = new NetworkTask(new NetWorkListener() {
+                        @Override
+                        public void getData() {
+
+                        }
+
+                        @Override
+                        public void postSucceed(Object object) {
+                            Log.d("thisis",object.toString());
+                        }
+                    });
                     networkTask.execute();
                 } else {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));

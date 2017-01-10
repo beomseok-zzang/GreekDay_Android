@@ -13,14 +13,19 @@ import android.widget.Button;
 
 import com.example.beomseok.greekday.adapter.ToppingRecyclerAdapter;
 import com.example.beomseok.greekday.model.Topping;
+import com.example.beomseok.greekday.util.NetWorkListener;
+import com.example.beomseok.greekday.util.NetworkTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class OrderToppingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Topping> toppings;
+    ToppingRecyclerAdapter toppingRecyclerAdapter;
     private HashMap<String,Topping> checkToppings;
     private Button btnSubmit;
     @Override
@@ -60,30 +65,28 @@ public class OrderToppingActivity extends AppCompatActivity {
             }
         });
         //topping 리스트 받아오기
-        toppings= new ArrayList<Topping>();
-        toppings.add(new Topping("1","그래놀라",300));
-        toppings.add(new Topping("2","딸기",200));
-        toppings.add(new Topping("3","블루베리",400));
-        toppings.add(new Topping("4","망고",200));
-        toppings.add(new Topping("5","호두",500));
-        toppings.add(new Topping("6","뮤즐리",200));
-        toppings.add(new Topping("7","바나나",500));
-        toppings.add(new Topping("8","땅콩",400));
-        toppings.add(new Topping("9","견과류",300));
+        if(toppings.isEmpty()){
 
+            NetworkTask networkTask = new NetworkTask(new NetWorkListener() {
+                @Override
+                public void postSucceed(Object object) {
+
+                    Set<Topping> set= ((Map)object).entrySet();
+                    Iterator<Topping> it = set.iterator();
+                    while(it.hasNext()){
+                        toppings.add(it.next());
+                        toppingRecyclerAdapter.notifyDataSetChanged();
+                    }
+                }
+            });
+            networkTask.execute(NetworkTask.TOPPPING);
+        }
         ///
+        toppingRecyclerAdapter = new ToppingRecyclerAdapter(toppings, getApplicationContext(),checkToppings,getSupportActionBar());
         checkToppings = new HashMap<String,Topping>();
-
-
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_topping);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
-        recyclerView.setAdapter(new ToppingRecyclerAdapter(toppings, getApplicationContext(),checkToppings,getSupportActionBar()));
+        recyclerView.setAdapter(toppingRecyclerAdapter);
 
 
     }

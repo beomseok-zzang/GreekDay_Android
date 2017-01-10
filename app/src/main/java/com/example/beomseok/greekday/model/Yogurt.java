@@ -1,38 +1,39 @@
 package com.example.beomseok.greekday.model;
 
-import java.util.ArrayList;
+import android.widget.Switch;
+
+import java.io.Serializable;
 
 /**
- * Created by beomseok on 2016. 12. 11..
+ * Created by beomseok on 2016. 12. 10..
  */
 
-public class Yogurt {
+public class Yogurt implements Serializable {
     public String id;
-    public String size;
-    public String title;
+    public String name;
     public int price;
-    public boolean isHoneyAdded;
-    public boolean isYogurtAdded;
-    public ArrayList<Topping> toppings;
+    public int size;
+    public int kcal;
+    public String desc;
+    public String isNew;
+    public String imgName;
+    public String imgPath;
+    public String onSale;
+
     public Yogurt(){
 
     }
-    public Yogurt(String title, char size,  int price, boolean isHoneyAdded,boolean isYogurtAdded, ArrayList<Topping> toppings) {
-        this.size = Character.toString(size);
-        this.title = title;
-        this.price = price;
-        this.isHoneyAdded = isHoneyAdded;
-        this.isYogurtAdded = isYogurtAdded;
-        this.toppings = toppings;
-    }
-    public Yogurt(String id, String title, char size,  int price, boolean isHoneyAdded,boolean isYogurtAdded, ArrayList<Topping> toppings) {
-        this.id = id;
-        this.size = Character.toString(size);
-        this.title = title;
-        this.price = price;
-        this.isHoneyAdded = isHoneyAdded;
-        this.isYogurtAdded = isYogurtAdded;
-        this.toppings = toppings;
-    }
 
+    public Yogurt(String id, String name, int price, int size, int kcal, String desc, String isNew, String imgName, String imgPath, String onSale) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.size = size;
+        this.kcal = kcal;
+        this.desc = desc;
+        this.isNew = isNew;
+        this.imgName = imgName;
+        this.imgPath = imgPath;
+        this.onSale = onSale;
+    }
 }

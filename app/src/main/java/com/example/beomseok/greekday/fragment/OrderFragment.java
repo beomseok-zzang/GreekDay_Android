@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.beomseok.greekday.R;
 import com.example.beomseok.greekday.adapter.OrderBaseRecyclerAdapter;
-import com.example.beomseok.greekday.model.BaseItem;
+import com.example.beomseok.greekday.model.Yogurt;
 import com.example.beomseok.greekday.model.Topping;
+import com.example.beomseok.greekday.util.NetWorkListener;
+import com.example.beomseok.greekday.util.NetworkTask;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -31,15 +35,13 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class OrderFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
+
     public static final int REQUEST_CODE=3312;
     RecyclerView recyclerView;
-    ArrayList<BaseItem> baseItems = new ArrayList<BaseItem>();
+    ArrayList<Yogurt> yogurts = new ArrayList<Yogurt>();
     OrderBaseRecyclerAdapter adapter;
-
+    String type;
 
     private OnFragmentInteractionListener mListener;
 
@@ -52,35 +54,46 @@ public class OrderFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      */
-    // TODO: Rename and change types and number of parameters
-    public static OrderFragment newInstance() {
+
+    public static OrderFragment newInstance(String type) {
         OrderFragment fragment = new OrderFragment();
+        Bundle args = new Bundle();
+        args.putString("type",type);
+        fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            type = getArguments().getString("type");
+            NetworkTask networkTask = new NetworkTask(new NetWorkListener() {
+                @Override
+                public void postSucceed(Object object) {
+
+                    Set<Yogurt> set= ((Map)object).entrySet();
+                    Iterator<Yogurt> it = set.iterator();
+                    while(it.hasNext()){
+                     yogurts.add(it.next());
+                    }
+                }
+            });
+            networkTask.execute(type);
 
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
-        baseItems.add(new BaseItem("1","플레인",3000,BaseItem.SIZE_SMALL));
-        baseItems.add(new BaseItem("2","그래놀라 바나나",3000,BaseItem.SIZE_SMALL));
-        baseItems.add(new BaseItem("3","그래놀라 블루베리",3000,BaseItem.SIZE_SMALL));
-        baseItems.add(new BaseItem("4","그래놀라 딸기",3000,BaseItem.SIZE_MEDIUM));
-        baseItems.add(new BaseItem("5","생과일믹스",3000,BaseItem.SIZE_MEDIUM));
-        baseItems.add(new BaseItem("6","그래놀라 제철과일",3000,BaseItem.SIZE_LARGE));
-        baseItems.add(new BaseItem("7","블루베리 호두",3000,BaseItem.SIZE_LARGE));
-        baseItems.add(new BaseItem("8","무화과 청포도",3000,BaseItem.SIZE_LARGE));
 
-        adapter = new OrderBaseRecyclerAdapter(baseItems,this);
+
+        adapter = new OrderBaseRecyclerAdapter(yogurts,this);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_base);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);

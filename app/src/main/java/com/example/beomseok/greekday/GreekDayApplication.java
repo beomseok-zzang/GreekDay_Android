@@ -17,17 +17,8 @@ public class GreekDayApplication extends Application {
      * Application onCreate() 메서드가 만들어 진다고 나와 있습니다.
      * by. Developer 사이트
      */
-    private String userId;
 
-    public String getuserId()
-    {
-        return userId;
-    }
 
-    public void setuserId(String userId)
-    {
-        this.userId = userId;
-    }
     @Override
     public void onCreate() {
         super.onCreate();

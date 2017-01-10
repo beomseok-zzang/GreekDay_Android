@@ -7,19 +7,18 @@ import java.util.ArrayList;
  */
 
 public class Order {
-    public ArrayList<Yogurt> yogurts = new ArrayList<Yogurt>();
-    public String userId;
+    public ArrayList<OrderYogurt> yogurts = new ArrayList<OrderYogurt>();
+    public int userId;
     public int price=0;
-    public long timeStamp;
-    public boolean isPackaged;
+    public String isPack;
 
     public Order(){
     }
-    public Order( ArrayList<Yogurt> yogurts, String userId, int price, long timeStamp,boolean isPackaged) {
-        this.isPackaged=isPackaged;
+    public Order( ArrayList<OrderYogurt> yogurts, int userId, int price,String isPack) {
+        this.isPack=isPack;
         this.yogurts = yogurts;
         this.userId = userId;
         this.price = price;
-        this.timeStamp = timeStamp;
+
     }
 }
