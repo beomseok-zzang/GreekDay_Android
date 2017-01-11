@@ -106,7 +106,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
                 case R.id.btn_base_addcart:
                     OrderYogurt orderYogurt2 = makeOrderYouger(position,viewHolder);
                     MainActivity.CART.addYogurt(orderYogurt2);
-                    Snackbar.make(view,"\'"+ GLOBAL.getYogurt(orderYogurt2.yogurtId).name+"\' 장바구니에 담겼습니다",1500).setAction("Action", null).show();
+                    //Snackbar.make(view,"\'"+ GLOBAL.getYogurt(orderYogurt2.yogurtId).name+"\' 장바구니에 담겼습니다",1500).setAction("Action", null).show();
                     break;
 
             }
@@ -256,7 +256,7 @@ public class OrderBaseRecyclerAdapter extends RecyclerView.Adapter<OrderBaseRecy
         for(int i=0;i<vh.toppings.size();i++)
             price+=vh.toppings.get(i).price;
         //String title, int yogurtId,  int price, String isHoneyAdded,String isYogurtAdded, ArrayList<Topping> toppings
-        return new OrderYogurt(title, 0,price, GLOBAL.makeBooleanToString(honey),GLOBAL.makeBooleanToString(isSizeUp) ,(ArrayList<Topping>) vh.toppings.clone());
+        return new OrderYogurt( 0,price, GLOBAL.makeBooleanToString(honey),GLOBAL.makeBooleanToString(isSizeUp) ,(ArrayList<Topping>) vh.toppings.clone());
     }
 
     public void setSelectedToppings(ArrayList<Topping> toppings) {

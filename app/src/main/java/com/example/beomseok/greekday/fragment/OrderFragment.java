@@ -49,12 +49,6 @@ public class OrderFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     */
-
     public static OrderFragment newInstance(String type) {
         OrderFragment fragment = new OrderFragment();
         Bundle args = new Bundle();

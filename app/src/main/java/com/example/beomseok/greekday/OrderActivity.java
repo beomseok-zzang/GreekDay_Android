@@ -93,9 +93,9 @@ public class OrderActivity extends AppCompatActivity implements OrderFragment.On
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(OrderFragment.getInstance(NetworkTask.BASE_SMALL), "small");
-        adapter.addFragment(OrderFragment.getInstance(NetworkTask.BASE_MEDIUM), "medium");
-        adapter.addFragment(OrderFragment.getInstance(NetworkTask.BASE_LARGE), "large");
+        adapter.addFragment(OrderFragment.newInstance(NetworkTask.BASE_SMALL), "small");
+        adapter.addFragment(OrderFragment.newInstance(NetworkTask.BASE_MEDIUM), "medium");
+        adapter.addFragment(OrderFragment.newInstance(NetworkTask.BASE_LARGE), "large");
         viewPager.setAdapter(adapter);
     }
 

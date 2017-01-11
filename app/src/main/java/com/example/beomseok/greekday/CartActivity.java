@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.beomseok.greekday.adapter.CartRecyclerAdapter;
+import com.example.beomseok.greekday.model.OrderYogurt;
 import com.example.beomseok.greekday.model.Yogurt;
 
 public class CartActivity extends AppCompatActivity {
@@ -73,8 +74,8 @@ public class CartActivity extends AppCompatActivity {
     private void setTextViews(){
         totalPrice = 0;
         tvBoughtNumber.setText("총 "+Integer.toString(MainActivity.CART.getYogurtSize())+"개");
-        for(Yogurt yogurt:MainActivity.CART.getYogurts()){
-            totalPrice+=yogurt.price;
+        for(OrderYogurt orderYogurt:MainActivity.CART.getOrderYogurts()){
+            totalPrice+=orderYogurt.price;
         }
         tvTotalPrice.setText(Integer.toString(totalPrice)+"원");
     }

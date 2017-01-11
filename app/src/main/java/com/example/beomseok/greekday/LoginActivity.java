@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements
 
             if (result.isSuccess()) {
                 GreekDayApplication myApp = (GreekDayApplication) getApplication();
-                GLOBAL.userId =result.getSignInAccount().getEmail();
+
                 Intent intent = new Intent(this, SelectNickNameActivity.class);
                 intent.putExtra("userInfo",new User(result.getSignInAccount().getEmail()));
                 startActivity(intent);

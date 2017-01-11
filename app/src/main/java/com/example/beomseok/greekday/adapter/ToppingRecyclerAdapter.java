@@ -104,7 +104,7 @@ public class ToppingRecyclerAdapter extends RecyclerView.Adapter<ToppingRecycler
                 if(!tpHoder.checkBox.isChecked()){
                     tpHoder.checkBox.setChecked(true);
 
-                    checkedToppings.put(toppings.get(position).id, toppings.get(position));
+                    //checkedToppings.put(toppings.get(position).id, toppings.get(position));
                     if(actionBar.getTitle()==null) {
                         actionBar.setTitle(toppings.get(position).name);
                     }else

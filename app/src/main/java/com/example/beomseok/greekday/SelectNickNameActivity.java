@@ -51,10 +51,6 @@ public class SelectNickNameActivity extends AppCompatActivity {
                 if (editText1.getText().toString() == null || editText1.getText().toString().equals("") || editText2.getText().toString() == null || editText2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "빈칸을 채워주세요", Toast.LENGTH_SHORT).show();
                     NetworkTask networkTask = new NetworkTask(new NetWorkListener() {
-                        @Override
-                        public void getData() {
-
-                        }
 
                         @Override
                         public void postSucceed(Object object) {

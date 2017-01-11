@@ -11,8 +11,10 @@ import android.widget.TextView;
 import com.example.beomseok.greekday.MainActivity;
 import com.example.beomseok.greekday.R;
 import com.example.beomseok.greekday.model.Cart;
+import com.example.beomseok.greekday.model.OrderYogurt;
 import com.example.beomseok.greekday.model.Topping;
 import com.example.beomseok.greekday.model.Yogurt;
+import com.example.beomseok.greekday.util.GLOBAL;
 
 import java.util.ArrayList;
 
@@ -22,11 +24,11 @@ import java.util.ArrayList;
 
 public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapter.ViewHolder> {
 
-    private ArrayList<Yogurt> yogurts;
+    private ArrayList<OrderYogurt> orderYogurts;
     private Context context;
 
     public CartRecyclerAdapter(Cart cart, Context context) {
-        this.yogurts = cart.getYogurts();
+
         this.context = context;
     }
 
@@ -59,38 +61,38 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
     public void removeItem(int position) {
         MainActivity.CART.removeYogurt(position);
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position, yogurts.size());
+        notifyItemRangeChanged(position, orderYogurts.size());
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ViewHolder cHolder = holder;
-        cHolder.tvTitle.setText(Integer.toString(position + 1) + ". " + yogurts.get(position).title);
-        cHolder.tvPrice.setText(Integer.toString(yogurts.get(position).price) + " 원");
-        cHolder.tvDetailInfo.setText(getDetailStr(yogurts.get(position)));
-        cHolder.tvToppings.setText(getToppingStr(yogurts.get(position)));
+        //cHolder.tvTitle.setText(Integer.toString(position + 1) + ". " + orderYogurts.get(position));
+        cHolder.tvPrice.setText(Integer.toString(orderYogurts.get(position).price) + " 원");
+        //cHolder.tvDetailInfo.setText(getDetailStr(orderYogurts.get(position).));
+        //cHolder.tvToppings.setText(getToppingStr(orderYogurts.get(position)));
     }
 
-    private String getDetailStr(Yogurt yogurt) {
+    private String getDetailStr(OrderYogurt orderYogurt) {
         StringBuilder result = new StringBuilder();
-        if (yogurt.isYogurtAdded) {
-            result.append("요거트 ");
-        }
-        if (yogurt.isHoneyAdded) {
-            result.append("꿀 ");
-        }
+        //if (GLOBAL.makeBooleanToString(orderYogurt.isYogurtAdded)) {
+        //    result.append("요거트 ");
+        //}
+        //if (orderYogurt.isHoneyAdded) {
+         //   result.append("꿀 ");
+        //}
         return result.toString();
     }
 
-    private String getToppingStr(Yogurt yogurt) {
+    private String getToppingStr(OrderYogurt orderYogurt) {
         StringBuilder result = new StringBuilder();
-        if (yogurt.toppings.size() < 1)
+        if (orderYogurt.toppings.size() < 1)
             return "";
         else
-            result.append("추가토핑: ");
-        for (Topping topping : yogurt.toppings) {
+            result.append("추가토핑: ");/*
+        for (Topping topping : orderYogurts.toppings) {
             result.append(topping.name + " ");
-        }
+        }*/
 
         return result.toString();
     }
@@ -98,6 +100,6 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
 
     @Override
     public int getItemCount() {
-        return yogurts.size();
+        return orderYogurts.size();
     }
 }
